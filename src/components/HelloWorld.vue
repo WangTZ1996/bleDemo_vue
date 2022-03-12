@@ -1,58 +1,133 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div>
+    <div id="modal" :class="{ none : bleServer }" @click="initBluetooth('HC-08', '0000ffe0-0000-1000-8000-00805f9b34fb')" ></div>
+    <nav>
+      <ul>
+        <li>
+          <a @click="sendMsg(1)" data-item="0">
+            <svg version="1.1" fill="#0cf" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewbox="0 0 64 64" enable-background="new 0 0 64 64">
+          </svg>
+          </a>
+        </li>
+        <li>
+          <a @click="sendMsg(2)" data-item="1">
+            <svg version="1.1" fill="rgb(255, 145, 0)" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewbox="0 0 64 64" enable-background="new 0 0 64 64">
+          </svg>
+          </a>
+        </li>
+        <li>
+          <a @click="sendMsg(3)"  data-item="2">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewbox="0 0 64 64" enable-background="new 0 0 64 64">
+          </svg>
+          </a>
+        </li>
+        <li>
+          <a @click="sendMsg(4)"  data-item="3">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewbox="0 0 64 64" enable-background="new 0 0 64 64">
+          </svg>
+          </a>
+        </li>
+        <li>
+          <a @click="sendMsg(5)"  data-item="4">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewbox="0 0 64 64" enable-background="new 0 0 64 64">
+          </svg>
+          </a>
+        </li>
+        <li>
+          <a @click="sendMsg(6)"  data-item="4">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewbox="0 0 64 64" enable-background="new 0 0 64 64">
+          </svg>
+          </a>
+        </li>
+        <li>
+          <a @click="sendMsg(7)"  data-item="4">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewbox="0 0 64 64" enable-background="new 0 0 64 64">
+          </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <audio id='do' :src="DO" />
+    <audio id='re' :src="RE" />
+    <audio id='mi' :src="MI" />
+    <audio id='fa' :src="FA"/>
+    <audio id='sol' :src="SOL"/>
+    <audio id='la' :src="LA" />
+    <audio id='si' :src="SI" />
   </div>
 </template>
 
 <script>
+import '../style/index.css'
+
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  name: "blue-tooth",
+  data() {
+    return {
+      bleServer: null,
+      modal: null,
+      keyList: ['do', 're', 'mi', 'fa', 'sol', 'la', 'si'],
+      DO: require('./music/do.mp3'),
+      RE: require('./music/re.mp3'),
+      MI: require('./music/mi.mp3'),
+      FA: require('./music/fa.mp3'),
+      SOL: require('./music/sol.mp3'),
+      LA: require('./music/la.mp3'),
+      SI: require('./music/si.mp3'),
+    };
+  },
+  mounted() {
+    
+  },
+  methods: {
+    initBluetooth(namePrefix, uuid) {
+      navigator.bluetooth
+        .requestDevice({
+          // acceptAllDevices: true,
+          filters: [{ namePrefix, }],
+          optionalServices: [uuid],
+        })
+        .then((res) => {
+          res.gatt.connect().then((res) => {
+            res
+              .getPrimaryService(uuid)
+              .then((res) => {
+                res.getCharacteristics().then((res) => {
+                  this.bleServer = res[0];
+                  document.getElementsByTagName('body')[0].className = 'bleConnect'
+                });
+              });
+          });
+        });
+    },
+    sendMsg(key) {
+      if (this.bleServer) {
+        this.bleServer.writeValue(new Uint16Array([key]));
+        var myAuto = document.getElementById(this.keyList[key - 1]);
+            myAuto.play();
+      }
+      try {
+        window.navigator.vibrate(200)
+      } catch (ex) {
+        console.log(ex)
+      }
+    },
   }
-}
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.initBle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
+.bleStatus {
   display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background-color: red;
 }
 </style>
