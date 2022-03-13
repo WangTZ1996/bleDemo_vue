@@ -48,6 +48,8 @@
       </ul>
     </nav>
 
+    <!-- <div @click="initBluetooth('HC-08', '0000ffe0-0000-1000-8000-00805f9b34fb')" class="testBtn" >test btn</div> -->
+
     <audio id='do' :src="DO" />
     <audio id='re' :src="RE" />
     <audio id='mi' :src="MI" />
@@ -78,14 +80,14 @@ export default {
     };
   },
   mounted() {
-    
   },
   methods: {
     initBluetooth(namePrefix, uuid) {
-      navigator.bluetooth
+      try {
+        navigator.bluetooth
         .requestDevice({
-          // acceptAllDevices: true,
-          filters: [{ namePrefix, }],
+          acceptAllDevices: true,
+          // filters: [{ namePrefix, }],
           optionalServices: [uuid],
         })
         .then((res) => {
@@ -100,6 +102,11 @@ export default {
               });
           });
         });
+      } catch (ex) {
+        console.log(ex)
+        alert(ex)
+      }
+      document.body.requestFullscreen();
     },
     sendMsg(key) {
       if (this.bleServer) {
@@ -108,7 +115,7 @@ export default {
             myAuto.play();
       }
       try {
-        window.navigator.vibrate(200)
+        window.navigator.vibrate([200])
       } catch (ex) {
         console.log(ex)
       }

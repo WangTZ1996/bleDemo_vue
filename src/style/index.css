@@ -30,6 +30,18 @@
     top: 0;
     left: 0;
   }
+
+  .testBtn {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    background-color: red;
+    z-index: 1;
+  }
   
   :root {
     font-size: calc(16px + (20 - 16) * (100vw - 320px)/(980 - 320));
@@ -94,7 +106,7 @@
     border-radius: 50%;
     content: "";
     display: block;
-    opacity: 0.5;
+    opacity: 1;
     position: absolute;
     top: 0.75em;
     left: 0.75em;
@@ -137,7 +149,8 @@
     animation-delay: 0s;
   }
   li:nth-of-type(1) a {
-    box-shadow: 0 0 0 0.1em #0cf inset, 0 0 1em #0cf inset;
+    background-color: rgba(0, 174, 255, 0.5);
+    box-shadow: 0 0 0 0.1em rgb(0, 174, 255) inset, 0 0 1em rgb(0, 174, 255) inset;
     transform: rotate(calc(0deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(0deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg);
   }
   
@@ -145,6 +158,7 @@
     animation-delay: -0.5s;
   }
   li:nth-of-type(2) a {
+    background-color: rgba(255, 145, 0, 0.5);
     box-shadow: 0 0 0 0.1em rgb(255, 145, 0) inset, 0 0 1em rgb(255, 145, 0) inset;
     transform: rotate(calc(-51.4285714286deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(51.4285714286deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg);
   }
@@ -153,6 +167,7 @@
     animation-delay: -1s;
   }
   li:nth-of-type(3) a {
+    background-color: rgba(238, 255, 0, 0.5);
     box-shadow: 0 0 0 0.1em rgb(238, 255, 0) inset, 0 0 1em rgb(238, 255, 0) inset;
     /* transform: rotate(calc(-102.8571428571deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(102.8571428571deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg); */
     transform: rotate(calc(251deg + var(--rotateTimes) * 51.4285714286deg)) translateY(12em) rotate(calc(102.8571428571deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg);
@@ -162,6 +177,7 @@
     animation-delay: -1.5s;
   }
   li:nth-of-type(4) a {
+    background-color: rgba(0, 38, 255, 0.5);
     box-shadow: 0 0 0 0.1em rgb(0, 38, 255) inset, 0 0 1em rgb(0, 38, 255) inset;
     transform: rotate(calc(-154.2857142857deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(154.2857142857deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg);
   }
@@ -170,6 +186,7 @@
     animation-delay: -2s;
   }
   li:nth-of-type(5) a {
+    background-color: rgba(153, 0, 255, 0.5);
     box-shadow: 0 0 0 0.1em rgb(153, 0, 255) inset, 0 0 1em rgb(153, 0, 255) inset;
     transform: rotate(calc(-205.7142857143deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(205.7142857143deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg);
   }
@@ -178,6 +195,7 @@
     animation-delay: -2.5s;
   }
   li:nth-of-type(6) a {
+    background-color: rgba(9, 255, 0, 0.5);
     box-shadow: 0 0 0 0.1em rgb(9, 255, 0) inset, 0 0 1em rgb(9, 255, 0) inset;
     /* transform: rotate(calc(-265.7142857143deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(205.7142857143deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg); */
     transform: rotate(calc(122deg + var(--rotateTimes) * 51.4285714286deg)) translateY(12em) rotate(calc(245deg - var(--rotateTimes) * 210deg)) rotateX(282deg);
@@ -187,6 +205,7 @@
     animation-delay: -3s;
   }
   li:nth-of-type(7) a {
+    background-color: rgba(255, 0, 0, 0.5);
     box-shadow: 0 0 0 0.1em rgb(255, 0, 0) inset, 0 0 1em rgb(255, 0, 0);
     /* transform: rotate(calc(-315.7142857143deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(205.7142857143deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg); */
     transform: rotate(calc(48deg + var(--rotateTimes) * 332deg)) translateY(8em) rotate(calc(315deg - var(--rotateTimes) * 334deg)) rotateX(286deg);
