@@ -34,13 +34,13 @@
           </a>
         </li>
         <li>
-          <a @click="sendMsg(6)"  data-item="4">
+          <a @click="sendMsg(6)"  data-item="5">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewbox="0 0 64 64" enable-background="new 0 0 64 64">
           </svg>
           </a>
         </li>
         <li>
-          <a @click="sendMsg(7)"  data-item="4">
+          <a @click="sendMsg(7)"  data-item="6">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64px" height="64px" viewbox="0 0 64 64" enable-background="new 0 0 64 64">
           </svg>
           </a>

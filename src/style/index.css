@@ -178,9 +178,10 @@ li:nth-of-type(2) {
 }
 
 li:nth-of-type(2) a {
-  width: 7em;
-  height: 7em;
-  transform: translate(-140%, 0);
+  width: 6em;
+  height: 6em;
+  /* transform: translate(-140%, 0); */
+  left: 0;
   background-color: rgba(255, 145, 0, 0.5);
   box-shadow: 0 0 0 0.1em rgb(255, 145, 0) inset, 0 0 1em rgb(255, 145, 0) inset;
   /* transform: rotate(calc(-51.4285714286deg + var(--rotateTimes) * 51.4285714286deg)) translateY(9em) rotate(calc(51.4285714286deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg); */
@@ -193,7 +194,8 @@ li:nth-of-type(3) {
 li:nth-of-type(3) a {
   width: 4em;
   height: 4em;
-  /* transform: translate(-140%, -30vh); */
+  top: 0;
+  transform: translate(-60%, 0);
   background-color: rgba(238, 255, 0, 0.5);
   box-shadow: 0 0 0 0.1em rgb(238, 255, 0) inset, 0 0 1em rgb(238, 255, 0) inset;
   /* transform: rotate(calc(251deg + var(--rotateTimes) * 51.4285714286deg)) translateY(12em) rotate(calc(102.8571428571deg - var(--rotateTimes) * 51.4285714286deg)) rotateX(-75deg); */
@@ -204,8 +206,10 @@ li:nth-of-type(4) {
 }
 
 li:nth-of-type(4) a {
-  width: 7.5em;
-  height: 7.5em;
+  width: 4.5em;
+  height: 4.5em;
+  right: 0;
+
   /* transform: translate(45%, -10%); */
   background-color: rgba(0, 38, 255, 0.5);
   box-shadow: 0 0 0 0.1em rgb(0, 38, 255) inset, 0 0 1em rgb(0, 38, 255) inset;
@@ -219,6 +223,8 @@ li:nth-of-type(5) {
 li:nth-of-type(5) a {
   width: 5.5em;
   height: 5.5em;
+  bottom: 0;
+  transform: translate(-50%, 0);
   /* transform: translate(-50%, 0vh); */
   background-color: rgba(153, 0, 255, 0.5);
   box-shadow: 0 0 0 0.1em rgb(153, 0, 255) inset, 0 0 1em rgb(153, 0, 255) inset;
@@ -230,9 +236,9 @@ li:nth-of-type(6) {
 }
 
 li:nth-of-type(6) a {
-  width: 5em;
-  height: 5em;
-  /* transform: translate(50%, -55vh); */
+  width: 3em;
+  height: 3em;
+  transform: translate(50%, 15vh);
   background-color: rgba(9, 255, 0, 0.5);
   box-shadow: 0 0 0 0.1em rgb(9, 255, 0) inset, 0 0 1em rgb(9, 255, 0) inset;
   /* transform: rotate(calc(122deg + var(--rotateTimes) * 51.4285714286deg)) translateY(12em) rotate(calc(245deg - var(--rotateTimes) * 210deg)) rotateX(282deg); */
@@ -243,8 +249,10 @@ li:nth-of-type(7) {
 }
 
 li:nth-of-type(7) a {
-  width: 7em;
-  height: 7em;
+  width: 6em;
+  height: 6em;
+  bottom: 0;
+  right: 0;
   /* transform: translate(-180%, -56vh); */
   background-color: rgba(255, 0, 0, 0.5);
   box-shadow: 0 0 0 0.1em rgb(255, 0, 0) inset, 0 0 1em rgb(255, 0, 0);
