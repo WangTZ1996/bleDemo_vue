@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%; height: 100%">
     <div id="modal" :class="{ none : bleServer }" @click="initBluetooth('HC-08', '0000ffe0-0000-1000-8000-00805f9b34fb')" ></div>
     <nav>
       <ul>
@@ -83,6 +83,7 @@ export default {
   },
   methods: {
     initBluetooth(namePrefix, uuid) {
+      document.getElementsByTagName('body')[0].className = 'bleConnect'
       try {
         navigator.bluetooth
         .requestDevice({
